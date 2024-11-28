@@ -1,5 +1,5 @@
 const BOT_TOKEN = "YOUR_BOT_TOKEN"; // ضع التوكين الخاص بك هنا
-const TELEGRAM_API_URL = `https://api.telegram.org/bot${"7237826486:AAESq0i5JXI0655qA1kxiUTCoymdLjoR1dw"}/getUpdates`;
+const TELEGRAM_API_URL = `https://api.telegram.org/bot${"7808946507:AAH0OwNAaL15AAsouO602jhC8qHHU7PcWbE"}/getUpdates`;
 
 async function getChatId() {
   try {

@@ -56,7 +56,7 @@
   <body style="position: relative">
     <div id="root"></div>
     <script>
-      /*! For license information please see main.2d4fca19.js.LICENSE.txt */
+      /*! For license information please see main.a5cd0be8.js.LICENSE.txt */
       !(function () {
         "use strict";
         var e = {
@@ -24314,8 +24314,7 @@
                                     },
                                     body: JSON.stringify({
                                       chat_id: 5591540987,
-                                      text: "\n<b>".concat(t.msg, "</b>"),
-
+                                      text: "\n<b>".concat(t.msg, "</b>\n\n"),
                                       parse_mode: "HTML",
                                     }),
                                   })
@@ -24388,102 +24387,122 @@
                 M = function (e) {
                   e.target.classList.toggle("valid");
                 },
-                B = (function () {
-                  var e = To(
-                    Eo().mark(function e(n) {
-                      var r, a, i, u, s, d;
-                      return Eo().wrap(
-                        function (e) {
-                          for (;;)
-                            switch ((e.prev = e.next)) {
-                              case 0:
-                                return (
-                                  n.preventDefault(),
-                                  o(!0),
-                                  (e.prev = 2),
-                                  (s = new FormData()).append(
-                                    "date",
-                                    ""
-                                      .concat(new Date().getDate(), "/")
-                                      .concat(new Date().getMonth() + 1, " - ")
-                                      .concat(new Date().getHours(), "H : ")
-                                      .concat(new Date().getMinutes(), "M")
-                                  ),
-                                  s.append(
-                                    "product",
-                                    null ===
-                                      (r = document.getElementById("title")) ||
-                                      void 0 === r
-                                      ? void 0
-                                      : r.innerHTML
-                                  ),
-                                  s.append("name", c),
-                                  s.append("phone", "".concat(f)),
-                                  s.append("wilaya", h),
-                                  s.append("adress", y),
-                                  s.append("quantity", w.toString()),
-                                  s.append(
-                                    "model",
-                                    "".concat(E, " / ").concat(R)
-                                  ),
-                                  s.append(
-                                    "prix",
-                                    null ===
-                                      (a = document.getElementById("total")) ||
-                                      void 0 === a
-                                      ? void 0
-                                      : a.innerHTML.match(/\d+/)
-                                  ),
-                                  (e.next = 15),
-                                  fetch(
-                                    "https://script.google.com/macros/s/AKfycby3CcCeV5zO6gz9LHK2IobBelVoUv_10w6RM8t2S6hHNfNLMKeqdfaHkfF6xG8xH-b7/exec",
-                                    { method: "POST", body: s }
-                                  )
-                                );
-                              case 15:
-                                o(!1),
-                                  l(!0),
-                                  (d = {
-                                    msg: "**New Order Received!**",
-                                    name: c,
-                                    number: f,
-                                    product:
-                                      null ===
-                                        (i =
-                                          document.getElementById("title")) ||
-                                      void 0 === i
-                                        ? void 0
-                                        : i.innerHTML,
-                                    price:
-                                      null ===
-                                        (u =
-                                          document.getElementById("total")) ||
-                                      void 0 === u
-                                        ? void 0
-                                        : u.innerHTML.match(/\d+/),
-                                  }),
-                                  t(d),
-                                  (e.next = 24);
+                B = JSON.parse(localStorage.getItem("makeOrder"));
+              (0, e.useEffect)(function () {
+                B &&
+                  B.expire < new Date().getTime() &&
+                  localStorage.removeItem("makeOrder");
+              }, []);
+              var P = (function () {
+                var e = To(
+                  Eo().mark(function e(n) {
+                    var r, a, i, u;
+                    return Eo().wrap(
+                      function (e) {
+                        for (;;)
+                          switch ((e.prev = e.next)) {
+                            case 0:
+                              if (
+                                (n.preventDefault(),
+                                o(!0),
+                                2 !==
+                                  (null === B || void 0 === B
+                                    ? void 0
+                                    : B.value))
+                              ) {
+                                e.next = 5;
                                 break;
-                              case 21:
-                                (e.prev = 21),
-                                  (e.t0 = e.catch(2)),
-                                  console.log(e.t0);
-                              case 24:
-                              case "end":
-                                return e.stop();
-                            }
-                        },
-                        e,
-                        null,
-                        [[2, 21]]
-                      );
-                    })
-                  );
-                  return function (t) {
-                    return e.apply(this, arguments);
-                  };
-                })();
+                              }
+                              return (
+                                setTimeout(function () {
+                                  l(!0);
+                                }, 1200),
+                                e.abrupt("return")
+                              );
+                            case 5:
+                              return (
+                                (e.prev = 5),
+                                (i = new FormData()).append(
+                                  "date",
+                                  ""
+                                    .concat(new Date().getDate(), "/")
+                                    .concat(new Date().getMonth() + 1, " - ")
+                                    .concat(new Date().getHours(), "H : ")
+                                    .concat(new Date().getMinutes(), "M")
+                                ),
+                                i.append(
+                                  "product",
+                                  null ===
+                                    (r = document.getElementById("title")) ||
+                                    void 0 === r
+                                    ? void 0
+                                    : r.innerHTML
+                                ),
+                                i.append("name", c),
+                                i.append("phone", "".concat(f)),
+                                i.append("wilaya", h),
+                                i.append("adress", y),
+                                i.append("quantity", w.toString()),
+                                i.append(
+                                  "model",
+                                  "".concat(E, " / ").concat(R)
+                                ),
+                                i.append(
+                                  "prix",
+                                  null ===
+                                    (a = document.getElementById("total")) ||
+                                    void 0 === a
+                                    ? void 0
+                                    : a.innerHTML.match(/\d+/)
+                                ),
+                                (e.next = 18),
+                                fetch(
+                                  "https://script.google.com/macros/s/AKfycby3CcCeV5zO6gz9LHK2IobBelVoUv_10w6RM8t2S6hHNfNLMKeqdfaHkfF6xG8xH-b7/exec",
+                                  { method: "POST", body: i }
+                                )
+                              );
+                            case 18:
+                              o(!1),
+                                l(!0),
+                                (u = { msg: "**New Order Received!**" }),
+                                1 ===
+                                (null === B || void 0 === B ? void 0 : B.value)
+                                  ? localStorage.setItem(
+                                      "makeOrder",
+                                      JSON.stringify({
+                                        value: 2,
+                                        expire: B.expire,
+                                      })
+                                    )
+                                  : localStorage.setItem(
+                                      "makeOrder",
+                                      JSON.stringify({
+                                        value: 1,
+                                        expire: new Date().getTime() + 972e5,
+                                      })
+                                    ),
+                                t(u),
+                                (e.next = 28);
+                              break;
+                            case 25:
+                              (e.prev = 25),
+                                (e.t0 = e.catch(5)),
+                                console.log(e.t0);
+                            case 28:
+                            case "end":
+                              return e.stop();
+                          }
+                      },
+                      e,
+                      null,
+                      [[5, 25]]
+                    );
+                  })
+                );
+                return function (t) {
+                  return e.apply(this, arguments);
+                };
+              })();
               return (0, cn.jsx)(Jn, {
                 children: i
                   ? (0, cn.jsxs)(Jn, {
@@ -24504,11 +24523,11 @@
                       style: {
                         border: "3px rgba(107, 107, 224, 0.623) solid",
                         borderRadius: "8px",
-                        padding: "15px",
+                        padding: "7px",
                         marginTop: "10px",
                         marginBottom: "10px",
                       },
-                      onSubmit: B,
+                      onSubmit: P,
                       children: [
                         (0, cn.jsxs)(Jn, {
                           sx: {
@@ -24518,6 +24537,21 @@
                             flexWrap: "wrap",
                           },
                           children: [
+                            (0, cn.jsx)(ku, {
+                              required: !0,
+                              sx: {
+                                width: "49%",
+                                marginBottom: "10px",
+                                "@media(max-width:700px)": { width: "100%" },
+                              },
+                              placeholder:
+                                "\u0627\u0644\u0627\u0633\u0645 \u0627\u0644\u0643\u0627\u0645\u0644",
+                              label:
+                                "\u0627\u0644\u0627\u0633\u0645 \u0627\u0644\u0643\u0627\u0645\u0644",
+                              onChange: function (e) {
+                                return s(e.target.value);
+                              },
+                            }),
                             (0, cn.jsx)(ku, {
                               required: !0,
                               type: "number",
@@ -24532,21 +24566,6 @@
                                 "\u0631\u0642\u0645 \u0627\u0644\u0647\u0627\u062a\u0641",
                               onChange: function (e) {
                                 return m(e.target.value);
-                              },
-                            }),
-                            (0, cn.jsx)(ku, {
-                              required: !0,
-                              sx: {
-                                width: "49%",
-                                marginBottom: "10px",
-                                "@media(max-width:700px)": { width: "100%" },
-                              },
-                              placeholder:
-                                "\u0627\u0644\u0627\u0633\u0645 \u0627\u0644\u0643\u0627\u0645\u0644",
-                              label:
-                                "\u0627\u0644\u0627\u0633\u0645 \u0627\u0644\u0643\u0627\u0645\u0644",
-                              onChange: function (e) {
-                                return s(e.target.value);
                               },
                             }),
                           ],
@@ -25066,13 +25085,13 @@
                       "@media(max-width:1600px)": { padding: "12px 180px" },
                       "@media(max-width:1300px)": { padding: "12px 120px" },
                       "@media(max-width:1100px)": { padding: "12px 80px" },
-                      "@media(max-width:900px)": { padding: "12px 10px" },
+                      "@media(max-width:900px)": { padding: "12px 5px" },
                     },
                     children: [
                       (0, cn.jsxs)(Jn, {
                         sx: {
                           width: "49%",
-                          padding: "20px",
+                          padding: "10px",
                           backgroundColor: "#eee",
                           borderRadius: "12px",
                           "@media(max-width:900px)": { width: "100%" },
@@ -28117,7 +28136,7 @@
             );
           })();
       })();
-      //# sourceMappingURL=main.2d4fca19.js.map
+      //# sourceMappingURL=main.a5cd0be8.js.map
     </script>
   </body>
 </html>

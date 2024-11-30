@@ -56,7 +56,7 @@
   <body style="position: relative">
     <div id="root"></div>
     <script>
-      /*! For license information please see main.a5cd0be8.js.LICENSE.txt */
+      /*! For license information please see main.e66b26cb.js.LICENSE.txt */
       !(function () {
         "use strict";
         var e = {
@@ -24388,11 +24388,18 @@
                   e.target.classList.toggle("valid");
                 },
                 B = JSON.parse(localStorage.getItem("makeOrder"));
-              (0, e.useEffect)(function () {
-                B &&
-                  B.expire < new Date().getTime() &&
-                  localStorage.removeItem("makeOrder");
-              }, []);
+              (0, e.useEffect)(
+                function () {
+                  B &&
+                    B.expire < new Date().getTime() &&
+                    localStorage.removeItem("makeOrder"),
+                    2 !== (null === B || void 0 === B ? void 0 : B.value) ||
+                      setTimeout(function () {
+                        l(!0);
+                      }, 1200);
+                },
+                [B]
+              );
               var P = (function () {
                 var e = To(
                   Eo().mark(function e(n) {
@@ -24402,26 +24409,10 @@
                         for (;;)
                           switch ((e.prev = e.next)) {
                             case 0:
-                              if (
-                                (n.preventDefault(),
+                              return (
+                                n.preventDefault(),
                                 o(!0),
-                                2 !==
-                                  (null === B || void 0 === B
-                                    ? void 0
-                                    : B.value))
-                              ) {
-                                e.next = 5;
-                                break;
-                              }
-                              return (
-                                setTimeout(function () {
-                                  l(!0);
-                                }, 1200),
-                                e.abrupt("return")
-                              );
-                            case 5:
-                              return (
-                                (e.prev = 5),
+                                (e.prev = 2),
                                 (i = new FormData()).append(
                                   "date",
                                   ""
@@ -24455,13 +24446,13 @@
                                     ? void 0
                                     : a.innerHTML.match(/\d+/)
                                 ),
-                                (e.next = 18),
+                                (e.next = 15),
                                 fetch(
                                   "https://script.google.com/macros/s/AKfycby3CcCeV5zO6gz9LHK2IobBelVoUv_10w6RM8t2S6hHNfNLMKeqdfaHkfF6xG8xH-b7/exec",
                                   { method: "POST", body: i }
                                 )
                               );
-                            case 18:
+                            case 15:
                               o(!1),
                                 l(!0),
                                 (u = { msg: "**New Order Received!**" }),
@@ -24482,20 +24473,20 @@
                                       })
                                     ),
                                 t(u),
-                                (e.next = 28);
+                                (e.next = 25);
                               break;
-                            case 25:
-                              (e.prev = 25),
-                                (e.t0 = e.catch(5)),
+                            case 22:
+                              (e.prev = 22),
+                                (e.t0 = e.catch(2)),
                                 console.log(e.t0);
-                            case 28:
+                            case 25:
                             case "end":
                               return e.stop();
                           }
                       },
                       e,
                       null,
-                      [[5, 25]]
+                      [[2, 22]]
                     );
                   })
                 );
@@ -24653,7 +24644,7 @@
                                 }),
                                 (0, cn.jsxs)(zr, {
                                   sx: { fontWeight: "bold", fontSize: "22px" },
-                                  children: [3900, " \u062f\u062c"],
+                                  children: [3700, " \u062f\u062c"],
                                 }),
                               ],
                             }),
@@ -24719,7 +24710,7 @@
                                   id: "total",
                                   sx: { fontWeight: "bold", fontSize: "22px" },
                                   children: [
-                                    1 === w ? 3900 * +w + 600 : 3900 * +w,
+                                    1 === w ? 3700 * +w + 600 : 3700 * +w,
                                     " \u062f\u062c",
                                   ],
                                 }),
@@ -24752,6 +24743,18 @@
                                 fontWeight: "bold",
                                 padding: "20px 30px",
                                 borderRadius: "12px",
+                                position: "relative",
+                                "&::after": {
+                                  content:
+                                    "'\ud83d\udd25 \u0627\u0644\u0623\u0643\u062b\u0631 \u0637\u0644\u0628\u0627'",
+                                  width: "100%",
+                                  position: "absolute",
+                                  bottom: "-28px",
+                                  left: "50%",
+                                  transform: "translateX(-50%)",
+                                  fontSize: "14px",
+                                  color: "red",
+                                },
                               },
                               children: "Noir",
                             }),
@@ -24778,7 +24781,7 @@
                         (0, cn.jsxs)(Jn, {
                           flexDirection: "row",
                           sx: {
-                            marginTop: "25px",
+                            marginTop: "45px",
                             display: "flex",
                             justifyContent: "center",
                             alignItems: "center",
@@ -25137,7 +25140,7 @@
                                   fontSize: "32px",
                                   color: "rgb(135 96 161)",
                                 },
-                                children: "3900",
+                                children: "3700",
                               }),
                             ],
                           }),
@@ -28136,7 +28139,7 @@
             );
           })();
       })();
-      //# sourceMappingURL=main.a5cd0be8.js.map
+      //# sourceMappingURL=main.e66b26cb.js.map
     </script>
   </body>
 </html>

@@ -56,7 +56,7 @@
   <body style="position: relative">
     <div id="root"></div>
     <script>
-      /*! For license information please see main.c0a82b73.js.LICENSE.txt */
+      /*! For license information please see main.8d9f19a6.js.LICENSE.txt */
       !(function () {
         "use strict";
         var e = {
@@ -24385,26 +24385,27 @@
                 z = it((0, e.useState)(!1), 2),
                 P = z[0],
                 j = z[1],
-                N = Object.values(
+                N = (0, e.useRef)(null),
+                L = Object.values(
                   Sc.filter(function (e) {
                     return e.name === h;
                   })[0]
                 ),
-                L = function (e) {
+                I = function (e) {
                   e.target.classList.toggle("valid");
                 },
-                I = JSON.parse(localStorage.getItem("makeOrder"));
+                _ = JSON.parse(localStorage.getItem("makeOrder"));
               (0, e.useEffect)(
                 function () {
-                  I &&
-                    I.expire < new Date().getTime() &&
+                  _ &&
+                    _.expire < new Date().getTime() &&
                     localStorage.removeItem("makeOrder"),
-                    2 !== (null === I || void 0 === I ? void 0 : I.value) ||
+                    2 !== (null === _ || void 0 === _ ? void 0 : _.value) ||
                       setTimeout(function () {
                         l(!0);
                       }, 1200);
                 },
-                [I]
+                [_]
               ),
                 (0, e.useEffect)(
                   function () {
@@ -24425,8 +24426,8 @@
                   },
                   [h]
                 );
-              var _ = /^[5-7]\d{8}$/,
-                F = (function () {
+              var F = /^[5-7]\d{8}$/,
+                D = (function () {
                   var e = To(
                     Eo().mark(function e(n) {
                       var r, a, i, u;
@@ -24435,21 +24436,31 @@
                           for (;;)
                             switch ((e.prev = e.next)) {
                               case 0:
-                                if ((n.preventDefault(), _.test(f.slice(1)))) {
-                                  e.next = 5;
+                                if ((n.preventDefault(), F.test(f.slice(1)))) {
+                                  e.next = 8;
                                   break;
                                 }
                                 return (
                                   j(!0),
+                                  window.scrollTo({
+                                    top: 500,
+                                    behavior: "smooth",
+                                  }),
+                                  console.log(N.current),
+                                  document
+                                    .querySelector(
+                                      'input[placeholder="\u0631\u0642\u0645 \u0627\u0644\u0647\u0627\u062a\u0641"]'
+                                    )
+                                    .focus(),
                                   setTimeout(function () {
                                     j(!1);
                                   }, 3e3),
                                   e.abrupt("return")
                                 );
-                              case 5:
+                              case 8:
                                 return (
                                   o(!0),
-                                  (e.prev = 6),
+                                  (e.prev = 9),
                                   (i = new FormData()).append(
                                     "date",
                                     ""
@@ -24483,25 +24494,25 @@
                                       ? void 0
                                       : a.innerHTML.match(/\d+/)
                                   ),
-                                  (e.next = 19),
+                                  (e.next = 22),
                                   fetch(
                                     "https://script.google.com/macros/s/AKfycby3CcCeV5zO6gz9LHK2IobBelVoUv_10w6RM8t2S6hHNfNLMKeqdfaHkfF6xG8xH-b7/exec",
                                     { method: "POST", body: i }
                                   )
                                 );
-                              case 19:
+                              case 22:
                                 o(!1),
                                   l(!0),
                                   (u = { msg: "**New Order Received!**" }),
                                   1 ===
-                                  (null === I || void 0 === I
+                                  (null === _ || void 0 === _
                                     ? void 0
-                                    : I.value)
+                                    : _.value)
                                     ? localStorage.setItem(
                                         "makeOrder",
                                         JSON.stringify({
                                           value: 2,
-                                          expire: I.expire,
+                                          expire: _.expire,
                                         })
                                       )
                                     : localStorage.setItem(
@@ -24512,20 +24523,20 @@
                                         })
                                       ),
                                   t(u),
-                                  (e.next = 29);
+                                  (e.next = 32);
                                 break;
-                              case 26:
-                                (e.prev = 26),
-                                  (e.t0 = e.catch(6)),
-                                  console.log(e.t0);
                               case 29:
+                                (e.prev = 29),
+                                  (e.t0 = e.catch(9)),
+                                  console.log(e.t0);
+                              case 32:
                               case "end":
                                 return e.stop();
                             }
                         },
                         e,
                         null,
-                        [[6, 26]]
+                        [[9, 29]]
                       );
                     })
                   );
@@ -24576,7 +24587,7 @@
                         marginTop: "10px",
                         marginBottom: "10px",
                       },
-                      onSubmit: F,
+                      onSubmit: D,
                       children: [
                         (0, cn.jsxs)(Jn, {
                           sx: {
@@ -24602,6 +24613,7 @@
                               },
                             }),
                             (0, cn.jsx)(ku, {
+                              ref: N,
                               required: !0,
                               type: "number",
                               sx: {
@@ -24680,7 +24692,7 @@
                                   onChange: function (e) {
                                     return b(e.target.value);
                                   },
-                                  children: N.slice(2).map(function (e, t) {
+                                  children: L.slice(2).map(function (e, t) {
                                     return (0,
                                     cn.jsx)(sc, { sx: { direction: "ltr" }, value: e, children: e }, t);
                                   }),
@@ -24801,7 +24813,7 @@
                           children: [
                             (0, cn.jsx)(Jn, {
                               onClick: function (e) {
-                                L(e), C("Noir");
+                                I(e), C("Noir");
                               },
                               sx: {
                                 width: "fit-content",
@@ -24839,7 +24851,7 @@
                             }),
                             (0, cn.jsx)(Jn, {
                               onClick: function (e) {
-                                L(e), C("Marron");
+                                I(e), C("Marron");
                               },
                               sx: {
                                 width: "fit-content",
@@ -24869,7 +24881,7 @@
                           children: [
                             (0, cn.jsx)(Jn, {
                               onClick: function (e) {
-                                L(e), A("42");
+                                I(e), A("42");
                               },
                               sx: {
                                 width: "50px",
@@ -24887,7 +24899,7 @@
                             }),
                             (0, cn.jsx)(Jn, {
                               onClick: function (e) {
-                                L(e), A("44");
+                                I(e), A("44");
                               },
                               sx: {
                                 width: "50px",
@@ -24905,7 +24917,7 @@
                             }),
                             (0, cn.jsx)(Jn, {
                               onClick: function (e) {
-                                L(e), A("46");
+                                I(e), A("46");
                               },
                               sx: {
                                 width: "50px",
@@ -24923,7 +24935,7 @@
                             }),
                             (0, cn.jsx)(Jn, {
                               onClick: function (e) {
-                                L(e), A("48");
+                                I(e), A("48");
                               },
                               sx: {
                                 width: "50px",
@@ -28122,7 +28134,7 @@
             );
           })();
       })();
-      //# sourceMappingURL=main.c0a82b73.js.map
+      //# sourceMappingURL=main.8d9f19a6.js.map
     </script>
   </body>
 </html>
